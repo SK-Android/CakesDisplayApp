@@ -12,6 +12,8 @@ import android.widget.TextView;
 import com.androidapp.mcs.cakesdisplayapp.MainActivity;
 import com.androidapp.mcs.cakesdisplayapp.R;
 import com.androidapp.mcs.cakesdisplayapp.model.Cakes;
+import com.androidapp.mcs.cakesdisplayapp.model.GlideApp;
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -43,7 +45,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         viewHolder.cakeTitle.setText(cakes1.getTitle());
         viewHolder.cakeDesc.setText(cakes1.getDesc());
 
-        Picasso.get().load(cakes1.getImage()).fit().placeholder(R.drawable.ic_launcher_background)
+
+        GlideApp.with(mContext)
+                .load(cakes1.getImage()).placeholder(R.drawable.ic_launcher_background)
+                .override(500, 200)
                 .into((ImageView) viewHolder.cakeImage.findViewById(R.id.imageView1));
     }
 
